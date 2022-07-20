@@ -1,34 +1,34 @@
 // Declaro variables y constantes
-var displayTotal = document.getElementById("valortotal");
-var simbolo = document.getElementById("simboloOperacion");
-var valor1 = document.getElementById("valor1");
-var valor2 = document.getElementById("valor2");
-const displayActual = document.getElementsByClassName("valoresActuales")[0];
-const botonBorrar = document.getElementById("borrar");
-const botonIgual = document.getElementById("igual");
-const botonBorrarUltimo = document.getElementById("borrarUltimoNumero");
-const calculadora = document.getElementById("calculadora");
-var simboloActual = "";
+var totalDisplay = document.getElementById("totalValue");
+var symbol = document.getElementById("operationSymb");
+var value1 = document.getElementById("value1");
+var value2 = document.getElementById("value2");
+const currentDisplay = document.getElementsByClassName("actualValues")[0];
+const deleteButton = document.getElementById("delete");
+const equalButton = document.getElementById("equal");
+const deleteLastButton = document.getElementById("removeLastNumber");
+const calculator = document.getElementById("calculator");
+var currentSymbol = "";
 
 // Inicio la escucha de los clicks sobre los numeros.
-calculadora.addEventListener("click", (e) => {
-  if (e.target.className === "numero") {
+calculator.addEventListener("click", (e) => {
+  if (e.target.className === "number") {
     writeNumber(e);
-  } else if (e.target.className === "operador") {
-    simboloActual = operation(e);
+  } else if (e.target.className === "operator") {
+    currentSymbol = operation(e);
   }
-  if (valor2.innerText != "") {
-    displayTotal.innerText = igual(simboloActual);
+  if (value2.innerText != "") {
+    totalDisplay.innerText = equal(currentSymbol);
   }
   numberSize();
 });
 
 function writeNumber(e) {
-  if (displayActual.innerText.length < 18) {
-    if (valor1.innerText === "0") {
-      valor1.innerText = e.target.innerText;
+  if (currentDisplay.innerText.length < 18) {
+    if (value1.innerText === "0") {
+      value1.innerText = e.target.innerText;
     } else {
-      valor1.innerText += e.target.innerText;
+      value1.innerText += e.target.innerText;
     }
   } else {
     alert("Cantidad maxima de caracteres: 15");
@@ -36,47 +36,47 @@ function writeNumber(e) {
 }
 
 function operation(e) {
-  if (displayTotal.innerText == "0") {
-    valor2.innerText = valor1.innerText;
+  if (totalDisplay.innerText == "0") {
+    value2.innerText = value1.innerText;
   } else{
-    valor2.innerText = igual(simboloActual)
+    value2.innerText = equal(currentSymbol)
   }
-  simbolo.innerText = e.target.innerText;
-  valor1.innerText = 0;
+  symbol.innerText = e.target.innerText;
+  value1.innerText = 0;
   if (e.target.innerText === "+") {
-    simboloActual = "suma";
+    currentSymbol = "adittion";
   } else if (e.target.innerText === "-") {
-    simboloActual = "resta";
+    currentSymbol = "subtraction";
   } else if (e.target.innerText === "x") {
-    simboloActual = "multiplicacion";
+    currentSymbol = "multiplication";
   } else if (e.target.innerText === "/") {
-    simboloActual = "division";
+    currentSymbol = "division";
   }
-  return simboloActual;
+  return currentSymbol;
 }
 
-botonIgual.addEventListener("click", () => {
-  if (valor2.innerText != "") {
-    valor1.innerText = igual(simboloActual);
-    valor2.innerText = "";
-    simbolo.innerText = "";
-    displayTotal.innerText = 0;
+equalButton.addEventListener("click", () => {
+  if (value2.innerText != "") {
+    value1.innerText = equal(currentSymbol);
+    value2.innerText = "";
+    symbol.innerText = "";
+    totalDisplay.innerText = 0;
     restartNumberSize()
   }
 });
 
-botonBorrarUltimo.addEventListener('click', ()=>{valor1.innerText = deleteLastNumber()})
+deleteLastButton.addEventListener('click', ()=>{value1.innerText = deleteLastNumber()})
 
-function igual(simbolo) {
-  if (simbolo === "suma") {
+function equal(symbol) {
+  if (symbol === "adittion") {
     
-    var result = suma();
-  } else if (simbolo === "resta") {
-    var result = resta();
-  } else if (simbolo === "division") {
+    var result = addition();
+  } else if (symbol === "subtraction") {
+    var result = subtraction();
+  } else if (symbol === "division") {
     var result = division();
-  } else if (simbolo === "multiplicacion") {
-    var result = multiplicacion();
+  } else if (symbol === "multiplication") {
+    var result = multiplication();
   }
   return (result)
 }
@@ -84,52 +84,52 @@ function igual(simbolo) {
 //Modifica el tamaño de la fuente segun la cantidad de caracteres en pantalla.
 function numberSize() {
   if (
-    displayActual.innerText.length > 7 &&
-    displayActual.innerText.length < 10
+    currentDisplay.innerText.length > 7 &&
+    currentDisplay.innerText.length < 10
   ) {
-    displayActual.style.fontSize = "1.8rem";
+    currentDisplay.style.fontSize = "1.8rem";
   } else if (
-    displayActual.innerText.length > 10 &&
-    displayActual.innerText.length < 15
+    currentDisplay.innerText.length > 10 &&
+    currentDisplay.innerText.length < 15
   ) {
-    displayActual.style.fontSize = "1.4rem";
+    currentDisplay.style.fontSize = "1.4rem";
   }
 }
 
 function restartNumberSize(){
-  displayActual.style.fontSize = "2.2rem"
+  currentDisplay.style.fontSize = "2.2rem"
 }
 
 //El boton 'Borrar' reinicia a 0
-botonBorrar.addEventListener("click", () => {
-  valor1.innerText = 0;
-  valor2.innerText = "";
-  simbolo.innerText = "";
-  displayTotal.innerText = 0;
+deleteButton.addEventListener("click", () => {
+  value1.innerText = 0;
+  value2.innerText = "";
+  symbol.innerText = "";
+  totalDisplay.innerText = 0;
   restartNumberSize()
 });
 
-function suma() {
-  return parseFloat(valor1.innerText) + parseFloat(valor2.innerText);
+function addition() {
+  return parseFloat(value1.innerText) + parseFloat(value2.innerText);
 }
-function resta() {
-  return parseFloat(valor2.innerText) - parseFloat(valor1.innerText);
+function subtraction() {
+  return parseFloat(value2.innerText) - parseFloat(value1.innerText);
 }
-function multiplicacion() {
-  return parseFloat(valor1.innerText) * parseFloat(valor2.innerText);
+function multiplication() {
+  return parseFloat(value1.innerText) * parseFloat(value2.innerText);
 }
 function division() {
-  if (valor1.innerText === "0") {
+  if (value1.innerText === "0") {
     var valor = "MathError: Division by 0";
   } else {
-    var valor = parseFloat(valor2.innerText) / parseFloat(valor1.innerText);
+    var valor = parseFloat(value2.innerText) / parseFloat(value1.innerText);
   }
   return valor;
 }
 
 function deleteLastNumber() {
-  if (valor1.innerText.length >= 2){
-    var number = valor1.innerText.substring(0, valor1.innerText.length -1);
+  if (value1.innerText.length >= 2){
+    var number = value1.innerText.substring(0, value1.innerText.length -1);
   } else {
     var number = 0
   }
