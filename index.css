@@ -1,0 +1,94 @@
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: black;
+}
+
+body {
+    margin: 0;
+    background-color: #15133C;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+h1, h2{
+    color: #EC994B;
+    font-size: 2.5rem;
+}
+
+h2{
+    font-size: 2rem;
+}
+
+#calculadora{
+    display: flex;
+    flex-direction: column;
+    background-color: #73777B;
+    padding: 10px;
+    border-radius: 3%;
+    
+}
+
+#teclado{
+    display: grid;
+    grid-template-columns: repeat(4,75px);
+    grid-template-rows: repeat(5,75px);
+}
+.display{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: #363636;
+    margin: 10px 0px 20px;
+    padding: 16px;
+    border-radius: 3%;
+    text-align: right;
+    justify-content: space-between;
+    word-break: break-all;
+}
+
+#valortotal{
+    color: aliceblue;
+    font-size: 1.5rem;
+}
+
+#valor1,#valor2{
+    color: aliceblue;
+    
+}
+
+#simboloOperacion{
+    color: aliceblue;
+    font-size: 1.2rem;
+    
+}
+
+.col-3{
+    grid-column: 1/4;
+}
+
+button {
+    cursor: pointer;
+    background-color: #F1EEE9;
+    margin: 3px;
+    padding: 0;
+    border-radius: 3%;
+    border: none;
+    font-size: 1.5em;
+}
+button:active{
+    background-color: #b9b9b9;
+}
+
+.valoresActuales{
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    font-size: 2.2rem;
+}

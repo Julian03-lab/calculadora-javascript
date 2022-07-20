@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora-JS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="index.css">
+    
+       
+</head>
+<body>
+    <div class="container">
+        <div class="Title">
+            <h1>Vanilla Calculator JavaScript</h1>
+            <h2>Made By Julián Fontana</h2>
+        </div>
+        <div id="calculadora">
+            <div class="display">
+                <div class="valoresActuales">
+                    <div id="valor2"></div>
+                    <div id="simboloOperacion"></div>
+                    <div id="valor1">0</div>
+                </div>
+                <div id="valortotal">0</div>
+            </div>
+            <div id="teclado">
+                <button class="col-3" id="borrar">Borrar</button>
+                <button id="borrarUltimoNumero">&larr;</button>
+                <button class="numero">7</button>
+                <button class="numero">8</button>
+                <button class="numero">9</button>
+                <button class="operador" id="divison">/</button>
+                <button class="numero">4</button>
+                <button class="numero">5</button>
+                <button class="numero">6</button>
+                <button class="operador" id="multiplicacion">x</button>
+                <button class="numero">1</button>
+                <button class="numero">2</button>
+                <button class="numero">3</button>
+                <button class="operador" id="resta">-</button>
+                <button class="numero">.</button>
+                <button class="numero">0</button>
+                <button id="igual">=</button>
+                <button class="operador" id="suma">+</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="index.js"></script>
+</body>
+</html>
